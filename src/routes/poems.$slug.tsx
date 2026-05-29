@@ -59,7 +59,7 @@ function PoemPage() {
         </header>
 
         <div className="mt-20 space-y-12">
-          {poem.body.map((stanza, i) => (
+          {poem.body.map((stanza: string, i: number) => (
             <motion.p
               key={i}
               initial={{ opacity: 0, y: 8 }}
@@ -74,7 +74,7 @@ function PoemPage() {
 
         <div className="mt-24 pt-10 border-t border-[var(--border)]">
           <div className="flex flex-wrap gap-3">
-            {poem.moods.map((m) => (
+            {poem.moods.map((m: string) => (
               <span key={m} className="text-label-caps px-3 py-2 border border-[var(--border)] text-[var(--text-muted)] rounded-[4px]">
                 {m}
               </span>
