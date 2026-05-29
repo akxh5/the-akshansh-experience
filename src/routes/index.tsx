@@ -21,8 +21,6 @@ function Index() {
   const latest = poems.slice(1, 4);
   const tallSet = new Set(["winter", "midnight"]);
 
-  const stagger = {
-    hidden: {},
   const stagger: Variants = {
     hidden: {},
     show: { transition: { staggerChildren: 0.15 } },
@@ -31,6 +29,8 @@ function Index() {
     hidden: { opacity: 0, y: 12 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
+
+  return (
     <>
       {/* HERO */}
       <section className="relative h-[100vh] min-h-[640px] flex items-center justify-center -mt-16 pt-16">
