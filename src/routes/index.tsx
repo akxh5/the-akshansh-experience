@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { PoemCard } from "@/components/PoemCard";
 import { CollectionTile } from "@/components/CollectionTile";
 import { collections, poems } from "@/lib/poems";
