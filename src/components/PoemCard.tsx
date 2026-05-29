@@ -8,7 +8,7 @@ export function PoemCard({ poem, index = 0 }: { poem: Poem; index?: number }) {
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 0.61, 0.36, 1] }}
+      transition={{ duration: 0.6, delay: index * 0.08, ease: "easeOut" }}
       className="group h-full"
     >
       <Link

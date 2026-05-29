@@ -27,7 +27,7 @@ function Index() {
   };
   const item = {
     hidden: { opacity: 0, y: 12 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 0.61, 0.36, 1] } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
   return (
@@ -113,7 +113,7 @@ function Index() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.22, 0.61, 0.36, 1] }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="text-display-md italic text-[var(--text-muted)]"
           >
             Writing as presence, not content.
