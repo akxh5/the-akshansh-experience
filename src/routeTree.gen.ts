@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SubmitRouteImport } from './routes/submit'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PoemsIndexRouteImport } from './routes/poems.index'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as PoemsSlugRouteImport } from './routes/poems.$slug'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 
+const SubmitRoute = SubmitRouteImport.update({
+  id: '/submit',
+  path: '/submit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +49,7 @@ const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/submit': typeof SubmitRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/poems/$slug': typeof PoemsSlugRoute
   '/collections/': typeof CollectionsIndexRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/submit': typeof SubmitRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/poems/$slug': typeof PoemsSlugRoute
   '/collections': typeof CollectionsIndexRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/submit': typeof SubmitRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/poems/$slug': typeof PoemsSlugRoute
   '/collections/': typeof CollectionsIndexRoute
@@ -67,15 +76,23 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/submit'
     | '/collections/$slug'
     | '/poems/$slug'
     | '/collections/'
     | '/poems/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/collections/$slug' | '/poems/$slug' | '/collections' | '/poems'
+  to:
+    | '/'
+    | '/submit'
+    | '/collections/$slug'
+    | '/poems/$slug'
+    | '/collections'
+    | '/poems'
   id:
     | '__root__'
     | '/'
+    | '/submit'
     | '/collections/$slug'
     | '/poems/$slug'
     | '/collections/'
@@ -84,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SubmitRoute: typeof SubmitRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
   PoemsSlugRoute: typeof PoemsSlugRoute
   CollectionsIndexRoute: typeof CollectionsIndexRoute
@@ -92,6 +110,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/submit': {
+      id: '/submit'
+      path: '/submit'
+      fullPath: '/submit'
+      preLoaderRoute: typeof SubmitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -132,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SubmitRoute: SubmitRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
   PoemsSlugRoute: PoemsSlugRoute,
   CollectionsIndexRoute: CollectionsIndexRoute,
