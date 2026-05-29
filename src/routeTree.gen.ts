@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PoemsIndexRouteImport } from './routes/poems.index'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as PoemsSlugRouteImport } from './routes/poems.$slug'
+import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,15 +35,22 @@ const PoemsSlugRoute = PoemsSlugRouteImport.update({
   path: '/poems/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
+  id: '/collections/$slug',
+  path: '/collections/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/poems/$slug': typeof PoemsSlugRoute
   '/collections/': typeof CollectionsIndexRoute
   '/poems/': typeof PoemsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/poems/$slug': typeof PoemsSlugRoute
   '/collections': typeof CollectionsIndexRoute
   '/poems': typeof PoemsIndexRoute
@@ -50,20 +58,33 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/poems/$slug': typeof PoemsSlugRoute
   '/collections/': typeof CollectionsIndexRoute
   '/poems/': typeof PoemsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/poems/$slug' | '/collections/' | '/poems/'
+  fullPaths:
+    | '/'
+    | '/collections/$slug'
+    | '/poems/$slug'
+    | '/collections/'
+    | '/poems/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/poems/$slug' | '/collections' | '/poems'
-  id: '__root__' | '/' | '/poems/$slug' | '/collections/' | '/poems/'
+  to: '/' | '/collections/$slug' | '/poems/$slug' | '/collections' | '/poems'
+  id:
+    | '__root__'
+    | '/'
+    | '/collections/$slug'
+    | '/poems/$slug'
+    | '/collections/'
+    | '/poems/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CollectionsSlugRoute: typeof CollectionsSlugRoute
   PoemsSlugRoute: typeof PoemsSlugRoute
   CollectionsIndexRoute: typeof CollectionsIndexRoute
   PoemsIndexRoute: typeof PoemsIndexRoute
@@ -99,11 +120,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PoemsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/collections/$slug': {
+      id: '/collections/$slug'
+      path: '/collections/$slug'
+      fullPath: '/collections/$slug'
+      preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CollectionsSlugRoute: CollectionsSlugRoute,
   PoemsSlugRoute: PoemsSlugRoute,
   CollectionsIndexRoute: CollectionsIndexRoute,
   PoemsIndexRoute: PoemsIndexRoute,
