@@ -25,21 +25,40 @@ function AboutPage() {
 
           <div className="text-body-reading text-[var(--text-primary)] space-y-8">
             <p>
-              Akshansh is a writer and digital architect focused on the intersection of atmospheric presence and minimal editorial design.
+              I write because silence has texture, and I want you to feel it.
             </p>
             <p>
-              This platform is not a blog. It is an archive of small weathers — a curated literary world where writing is experienced as emotional presence, not content.
+              The Akshansh Experience is not a blog. It is not a portfolio. It is an archive of small weathers — the kinds of feelings that arrive at 2am and refuse to be named properly.
             </p>
             <p>
-              Every poem, collection, and particle is intended to encourage a slower, rhythmic state of reading. The cold here is intentional.
+              Every poem here was written in a specific kind of quiet. Some in winter. Some in the particular loneliness of a crowded room. Some while trying to forget, and some while trying to remember.
+            </p>
+            <p>
+              This platform was built to resist the speed of the internet. There is no algorithm here. No engagement farming. No infinite scroll. Just writing, and the atmosphere it deserves.
+            </p>
+
+            <blockquote className="pl-6 border-l border-[var(--border)] italic text-headline-sm my-12 text-[var(--text-secondary)]">
+              "The cold here is intentional."
+            </blockquote>
+
+            <p>
+              If something lands — save it. Share it. Or just close the window and carry it with you. That's enough.
             </p>
           </div>
           
           <div className="mt-20 pt-10 border-t border-[var(--border)]">
-            <h2 className="text-label-caps text-[var(--text-muted)] mb-4">Contact</h2>
-            <a href="mailto:hello@the-akshansh-experience.com" className="text-body-standard italic hover:text-[var(--accent)] transition-colors">
-              hello@the-akshansh-experience.com
-            </a>
+            <h2 className="text-label-caps text-[var(--text-muted)] mb-6">CONTACT</h2>
+            <div className="flex flex-col gap-4">
+              <a href="mailto:hello@the-akshansh-experience.com" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
+                hello@the-akshansh-experience.com
+              </a>
+              <a href="https://instagram.com/akxh_5" target="_blank" rel="noopener noreferrer" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
+                INSTAGRAM — @akxh_5
+              </a>
+              <a href="https://twitter.com/akxh_5" target="_blank" rel="noopener noreferrer" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
+                TWITTER — @akxh_5
+              </a>
+            </div>
           </div>
         </div>
       </div>

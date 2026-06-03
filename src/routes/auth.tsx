@@ -65,8 +65,8 @@ function AuthPage() {
           animate={{ opacity: 1, y: 0 }}
           className="w-full max-w-[420px] flex flex-col items-center text-center"
         >
-          <h1 className="text-display-md font-display font-light text-[var(--text-primary)]">
-            Akshansh
+          <h1 className="text-label-caps text-[var(--text-muted)] tracking-widest">
+            THE AKSHANSH EXPERIENCE
           </h1>
           
           <div className="mt-8">
