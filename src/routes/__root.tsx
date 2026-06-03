@@ -10,10 +10,12 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 
 import appCss from "../styles.css?url";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeProvider, useTheme } from "@/components/ThemeProvider";
+import { AuthProvider } from "@/context/AuthContext";
 import { SnowCanvas } from "@/components/SnowCanvas";
-import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
+import { FloatingNav } from "@/components/FloatingNav";
+import { SoundControl } from "@/components/SoundControl";
+import { cn } from "@/lib/utils";
 
 function NotFoundComponent() {
   return (
@@ -71,53 +73,78 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
+      { 
+        rel: "stylesheet", 
+        href: "https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@400;500&display=swap" 
+      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
+    ],
   }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
 
-function RootShell({ children }: { children: React.ReactNode }) {
+function App() {
+  const router = useRouter();
+  const pathname = router.state.location.pathname;
+  const isHome = pathname === "/";
+  const { theme } = useTheme();
+
+  return (
+    <AuthProvider>
+      <div id="app-root" className={cn(theme === "winter-ivory" && "winter-ivory")}>
+        {/* GLOBAL BACKGROUNDS */}
+        <div 
+          className="fixed inset-0 z-[-2] bg-[var(--bg-base)] transition-colors duration-700"
+        />
+        {/* HOMEPAGE GRADIENT LAYER */}
+        <div 
+          className={cn(
+            "fixed inset-0 z-[-1] transition-opacity duration-1000 pointer-events-none",
+            isHome && theme === "winter-ivory" ? "opacity-100" : "opacity-0"
+          )}
+          style={{
+            background: "radial-gradient(circle at center, var(--bg-base) 0%, var(--bg-gradient-end) 100%)"
+          }}
+        />
+
+        <SnowCanvas />
+        <SoundControl />
+        <FloatingNav />
+
+        <main className={cn("relative z-10", isHome && "home-main")}>
+          <Outlet />
+        </main>
+      </div>
+    </AuthProvider>
+  );
+}
+
+function RootComponent() {
+  const { queryClient } = Route.useRouteContext();
+
   return (
     <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
-        {children}
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </QueryClientProvider>
         <Scripts />
       </body>
     </html>
-  );
-}
-
-function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-  const router = useRouter();
-  const pathname = router.state.location.pathname;
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <SnowCanvas />
-        <Nav />
-        <main className="relative z-10 pt-16">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={pathname}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <Outlet />
-            </motion.div>
-          </AnimatePresence>
-        </main>
-        <Footer />
-      </ThemeProvider>
-    </QueryClientProvider>
   );
 }

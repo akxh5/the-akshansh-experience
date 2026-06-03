@@ -9,17 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YearsRouteImport } from './routes/years'
 import { Route as SubmitRouteImport } from './routes/submit'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PoemsIndexRouteImport } from './routes/poems.index'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as PoemsSlugRouteImport } from './routes/poems.$slug'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
+import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
 
+const YearsRoute = YearsRouteImport.update({
+  id: '/years',
+  path: '/years',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SubmitRoute = SubmitRouteImport.update({
   id: '/submit',
   path: '/submit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -52,11 +71,20 @@ const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
   path: '/collections/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/callback',
+  path: '/callback',
+  getParentRoute: () => AuthRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRouteWithChildren
+  '/dashboard': typeof DashboardRoute
   '/submit': typeof SubmitRoute
+  '/years': typeof YearsRoute
+  '/auth/callback': typeof AuthCallbackRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/poems/$slug': typeof PoemsSlugRoute
   '/collections/': typeof CollectionsIndexRoute
@@ -65,7 +93,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRouteWithChildren
+  '/dashboard': typeof DashboardRoute
   '/submit': typeof SubmitRoute
+  '/years': typeof YearsRoute
+  '/auth/callback': typeof AuthCallbackRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/poems/$slug': typeof PoemsSlugRoute
   '/collections': typeof CollectionsIndexRoute
@@ -75,7 +107,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRouteWithChildren
+  '/dashboard': typeof DashboardRoute
   '/submit': typeof SubmitRoute
+  '/years': typeof YearsRoute
+  '/auth/callback': typeof AuthCallbackRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/poems/$slug': typeof PoemsSlugRoute
   '/collections/': typeof CollectionsIndexRoute
@@ -86,7 +122,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
+    | '/dashboard'
     | '/submit'
+    | '/years'
+    | '/auth/callback'
     | '/collections/$slug'
     | '/poems/$slug'
     | '/collections/'
@@ -95,7 +135,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/auth'
+    | '/dashboard'
     | '/submit'
+    | '/years'
+    | '/auth/callback'
     | '/collections/$slug'
     | '/poems/$slug'
     | '/collections'
@@ -104,7 +148,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/auth'
+    | '/dashboard'
     | '/submit'
+    | '/years'
+    | '/auth/callback'
     | '/collections/$slug'
     | '/poems/$slug'
     | '/collections/'
@@ -114,7 +162,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRouteWithChildren
+  DashboardRoute: typeof DashboardRoute
   SubmitRoute: typeof SubmitRoute
+  YearsRoute: typeof YearsRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
   PoemsSlugRoute: typeof PoemsSlugRoute
   CollectionsIndexRoute: typeof CollectionsIndexRoute
@@ -123,11 +174,32 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/years': {
+      id: '/years'
+      path: '/years'
+      fullPath: '/years'
+      preLoaderRoute: typeof YearsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/submit': {
       id: '/submit'
       path: '/submit'
       fullPath: '/submit'
       preLoaderRoute: typeof SubmitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -172,13 +244,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CollectionsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof AuthRoute
+    }
   }
 }
+
+interface AuthRouteChildren {
+  AuthCallbackRoute: typeof AuthCallbackRoute
+}
+
+const AuthRouteChildren: AuthRouteChildren = {
+  AuthCallbackRoute: AuthCallbackRoute,
+}
+
+const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRouteWithChildren,
+  DashboardRoute: DashboardRoute,
   SubmitRoute: SubmitRoute,
+  YearsRoute: YearsRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
   PoemsSlugRoute: PoemsSlugRoute,
   CollectionsIndexRoute: CollectionsIndexRoute,
@@ -187,3 +279,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
