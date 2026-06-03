@@ -58,6 +58,9 @@ function AboutPage() {
               <a href="https://twitter.com/akxh_5" target="_blank" rel="noopener noreferrer" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
                 TWITTER — @akxh_5
               </a>
+              <a href="https://akxh5.me" target="_blank" rel="noopener noreferrer" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
+                PORTFOLIO — akxh5.me
+              </a>
             </div>
           </div>
         </div>
