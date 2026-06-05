@@ -731,6 +731,27 @@ begging to be ruined.`,
     featured: false,
     coverImage: "",
     isSubmission: false
+  },
+  {
+    slug: "a-life-of-meaning",
+    title: "A Life of Meaning",
+    author: "Akshansh",
+    excerpt: "I do not wish for a life of mere comfort, for comfort weakens the spirit when pursued as an end.",
+    content: `I do not wish for a life of mere comfort, for comfort weakens the spirit when pursued as an end. I wish instead for a life of meaning, one in which my work outlives my presence, and my actions leave order where there was once disorder.
+
+I do not seek applause from the crowd, for the crowd praises today what it forgets tomorrow. I seek mastery over myself: clarity in thought, discipline in action, and the courage to continue when no reward is visible.
+
+To build something true, this is enough. To remain honest in a world addicted to appearance, this is enough. To endure failure without surrendering conviction, this is enough.
+
+I know that distraction is the enemy of depth. A man divided among too many desires becomes weak in all of them. Therefore I must choose carefully what deserves my years, for life is not short by nature, but made short by waste.
+
+I wish to become the kind of man who does not merely consume the world, but shapes a small part of it with intention. A man whose peace does not depend on praise, wealth, or circumstance, but on the knowledge that he lived deliberately and did not betray his own potential.`,
+    mood: ["PHILOSOPHY", "INTROSPECTION", "RESILIENCE"],
+    collection: "observations",
+    date: "2026-06-05",
+    featured: false,
+    coverImage: "",
+    isSubmission: false
   }
 ];
 
