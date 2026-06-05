@@ -752,6 +752,60 @@ I wish to become the kind of man who does not merely consume the world, but shap
     featured: false,
     coverImage: "",
     isSubmission: false
+  },
+  {
+    slug: "arms-open",
+    title: "Arms Open",
+    author: "Akshansh",
+    excerpt: "I've only known the quiet kind of empty.",
+    content: `That meme said  
+imagine her running to you with her arms open.  
+
+I smiled a little,  
+because I've only known the quiet kind of empty.  
+
+In college,  
+she never stood when I walked in.  
+She never looked up,  
+never paused,  
+never let her eyes warm when they found mine.  
+
+A simple handshake felt like a burden to her,  
+a hug was a dream meant for other people.  
+
+And still I waited,  
+still I hoped,  
+still I stood there thinking  
+maybe she would notice me today.  
+
+But she always had some other place in her mind,  
+some other world she lived in,  
+somewhere I never quite belonged.  
+
+And I kept telling myself  
+she was busy or tired  
+or caught in her own thoughts,  
+anything but the truth.  
+
+But the truth was gentle and cruel at the same time:  
+if someone wants you, you feel it.  
+If they don't,  
+you learn to pretend it doesn't hurt.  
+
+So when I see that meme,  
+her running to you, arms open,  
+it doesn't make me laugh.  
+
+It just reminds me  
+how I once waited for the smallest sign of care  
+from someone who never even took  
+one step toward me.`,
+    mood: ["ABSENCE", "LONGING", "MEMORY"],
+    collection: "architecture-of-leaving",
+    date: "2026-06-05",
+    featured: false,
+    coverImage: "",
+    isSubmission: false
   }
 ];
 
