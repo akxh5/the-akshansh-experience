@@ -648,7 +648,7 @@ and became the night.`
     author: "Akshansh",
     mood: ["SOLITUDE", "INSOMNIA", "CATHARSIS"],
     collection: "nocturne",
-    featured: true,
+    featured: false,
     excerpt: "Tonight I'm the lighthouse: at the edge, alone, and burning.",
     coverImage: "",
     content: `Some days I'm the ocean.  
@@ -955,7 +955,7 @@ with or without the world noticing.`,
     mood: ["PHILOSOPHY", "RESILIENCE", "INTROSPECTION"],
     collection: "observations",
     date: "2026-06-05",
-    featured: false,
+    featured: true,
     coverImage: "",
     isSubmission: false
   }
