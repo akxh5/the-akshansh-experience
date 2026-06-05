@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { useAuth } from "@/context/AuthContext";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { toggleLike, toggleSave, getLikeCount, checkUserInteractions } from "@/lib/interactions";
+import { supabase } from "@/lib/supabase";
 
 interface SocialActionButtonsProps {
   poem: Poem;
@@ -70,19 +71,29 @@ export function SocialActionButtons({ poem }: SocialActionButtonsProps) {
   const navigate = useNavigate();
   const { location } = useRouterState();
   const [liked, setLiked] = useState(false);
-  const [count, setCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(0);
   const [bookmarked, setBookmarked] = useState(false);
+  const [saveCount, setSaveCount] = useState(0);
   const [isCapturing, setIsCapturing] = useState(false);
 
   useEffect(() => {
     const loadStats = async () => {
-      const { count: likeCount } = await getLikeCount(poem.slug);
-      setCount(likeCount);
+      if (!supabase) return;
 
+      // 1. Fetch TOTAL counts (Publicly accessible)
+      const [likesRes, savesRes] = await Promise.all([
+        supabase.from('likes').select('*', { count: 'exact', head: true }).eq('poem_slug', poem.slug),
+        supabase.from('saves').select('*', { count: 'exact', head: true }).eq('poem_slug', poem.slug)
+      ]);
+
+      setLikeCount(likesRes.count || 0);
+      setSaveCount(savesRes.count || 0);
+
+      // 2. Fetch User-specific state (Auth required)
       if (user) {
-        const { liked, saved } = await checkUserInteractions(user.id, poem.slug);
-        setLiked(liked);
-        setBookmarked(saved);
+        const { liked: userLiked, saved: userSaved } = await checkUserInteractions(user.id, poem.slug);
+        setLiked(userLiked);
+        setBookmarked(userSaved);
       }
     };
 
@@ -97,26 +108,31 @@ export function SocialActionButtons({ poem }: SocialActionButtonsProps) {
 
     if (type === "like") {
       const originalLiked = liked;
-      const originalCount = count;
+      const originalCount = likeCount;
       
+      // Optimistic update
       setLiked(!originalLiked);
-      setCount(prev => originalLiked ? prev - 1 : prev + 1);
+      setLikeCount(prev => originalLiked ? prev - 1 : prev + 1);
 
       const { error } = await toggleLike(user.id, poem.slug);
       if (error) {
         toast.error("A small collapse: " + error.message);
         setLiked(originalLiked);
-        setCount(originalCount);
+        setLikeCount(originalCount);
       }
     } else {
       const originalSaved = bookmarked;
+      const originalSaveCount = saveCount;
       
+      // Optimistic update
       setBookmarked(!originalSaved);
+      setSaveCount(prev => originalSaved ? prev - 1 : prev + 1);
 
       const { error } = await toggleSave(user.id, poem.slug);
       if (error) {
         toast.error("A small collapse: " + error.message);
         setBookmarked(originalSaved);
+        setSaveCount(originalSaveCount);
       } else {
         toast.success(bookmarked ? "Removed from your library." : "Stored in your library.");
       }
@@ -163,7 +179,7 @@ export function SocialActionButtons({ poem }: SocialActionButtonsProps) {
     <div className="mt-10 flex flex-wrap items-center gap-8 text-[var(--text-muted)]">
       <button
         onClick={() => handleAction("like")}
-        className="flex items-center gap-2 hover:text-[var(--text-primary)] transition-colors"
+        className="flex items-center gap-2 hover:text-[var(--text-primary)] transition-colors group"
       >
         <motion.span
           animate={{ scale: liked ? [1, 1.25, 1] : 1 }}
@@ -177,12 +193,12 @@ export function SocialActionButtons({ poem }: SocialActionButtonsProps) {
             className={liked ? "text-red-400/80" : ""}
           />
         </motion.span>
-        <span className="text-label-caps">{count}</span>
+        <span className="text-label-caps">{likeCount}</span>
       </button>
 
       <button
         onClick={() => handleAction("save")}
-        className="hover:text-[var(--text-primary)] transition-colors"
+        className="flex items-center gap-2 hover:text-[var(--text-primary)] transition-colors group"
         aria-label="Bookmark"
       >
         <Bookmark
@@ -191,6 +207,7 @@ export function SocialActionButtons({ poem }: SocialActionButtonsProps) {
           fill={bookmarked ? "currentColor" : "none"}
           className={bookmarked ? "text-[var(--accent)]" : ""}
         />
+        <span className="text-label-caps">{saveCount}</span>
       </button>
 
       <div className="h-4 w-px bg-[var(--border)] opacity-20 hidden md:block" />
