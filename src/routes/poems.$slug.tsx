@@ -62,7 +62,7 @@ function PoemPage() {
             <h1 className="text-[30px] md:text-[36px] font-display mt-6 text-[var(--text-primary)] leading-tight">{poem.title}</h1>
             <Divider className="my-8" />
             <p className="text-label-caps text-[var(--text-muted)]">
-              by Akshansh <span className="mx-3">·</span> {formatPoemDate(poem.date)}
+              by {poem.author.toUpperCase()} <span className="mx-3">·</span> {formatPoemDate(poem.date)}
             </p>
           </header>
 

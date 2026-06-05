@@ -15,12 +15,19 @@ export function PoemCard({ poem, index = 0 }: { poem: Poem; index?: number }) {
       <Link
         to="/poems/$slug"
         params={{ slug: poem.slug }}
-        className="block h-full p-8 border border-[var(--border)] bg-[var(--bg-surface)] transition-colors duration-300 hover:bg-[var(--bg-surface-high)] hover:border-[var(--border-bright)] rounded-none"
+        className="block h-full p-8 border border-[var(--border)] bg-[var(--bg-surface)] transition-colors duration-300 hover:bg-[var(--bg-surface-high)] hover:border-[var(--border-bright)] rounded-none relative"
       >
         <div className="flex flex-col h-full gap-6">
-          <span className="text-label-caps text-[var(--accent)] tracking-[0.2em] text-[10px]">
-            {poem.mood.join(" · ")}
-          </span>
+          <div className="flex justify-between items-start">
+            <span className="text-label-caps text-[var(--accent)] tracking-[0.2em] text-[10px]">
+              {poem.mood.join(" · ")}
+            </span>
+            {poem.isSubmission && (
+              <span className="text-[9px] font-sans font-medium tracking-[0.2em] text-[var(--text-muted)] opacity-50">
+                COMMUNITY
+              </span>
+            )}
+          </div>
           <h3 className="text-headline-lg text-[var(--text-primary)]">{poem.title}</h3>
           <p className="text-body-standard italic text-[var(--text-secondary)] flex-1">
             {poem.excerpt}
