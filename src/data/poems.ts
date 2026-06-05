@@ -28,6 +28,7 @@ export interface Poem {
   excerpt: string;
   coverImage: string;
   content: string;
+  isSubmission?: boolean;
 }
 
 export interface Collection {
@@ -657,6 +658,22 @@ Tonight I'm the lighthouse:
 at the edge,  
 alone,  
 and burning.`
+  },
+  {
+    slug: "among-the-stars",
+    title: "Among the Stars",
+    author: "Sahaj",
+    excerpt: "The stars don't shine by chance alone,",
+    content: `The stars don't shine by chance alone,
+They burn through darkness on their own.
+Like every dream within your heart,
+Great galaxies begin with a spark.`,
+    mood: ["WONDER", "HOPE"],
+    collection: "constellations",
+    date: "2026-06-04",
+    featured: false,
+    coverImage: "",
+    isSubmission: true
   }
 ];
 
