@@ -806,6 +806,43 @@ one step toward me.`,
     featured: false,
     coverImage: "",
     isSubmission: false
+  },
+  {
+    slug: "just-answer-for-a-fact",
+    title: "Just Answer for a Fact",
+    author: "Akshansh",
+    excerpt: "I couldn't be your 10/10",
+    content: `What can One be?  
+What one couldn't be?  
+
+I couldn't be  
+just what  
+I couldn't be your 10/10  
+I couldn't be your charming one  
+I couldn't be your friend  
+I couldn't be your pretty end  
+I couldn't be the one you seek  
+I couldn't be the rising peak  
+The one thing in mind that a person can seek  
+
+What I can be and I  
+
+Still wrote your name where no one sees  
+Between half-typed words and quiet pleas  
+Left the truth inside a draft  
+A maybe, a never, a photograph  
+
+If someday you ever read between  
+Know this was what I meant  
+
+I couldn't be what you dreamed of  
+But I was someone who almost went.`,
+    mood: ["ABSENCE", "LONGING", "MELANCHOLY"],
+    collection: "architecture-of-leaving",
+    date: "2026-06-05",
+    featured: false,
+    coverImage: "",
+    isSubmission: false
   }
 ];
 
