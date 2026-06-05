@@ -46,13 +46,14 @@ function SubmitPage() {
     const title = formData.get("title") as string;
     const authorName = formData.get("author") as string;
     const content = formData.get("poem") as string;
+    const authorEmail = user.email || "";
 
     setIsSubmitting(true);
-    
+
     try {
       const { error } = await submitPoem({
         userId: user.id,
-        authorEmail: user.email || "",
+        authorEmail,
         title,
         authorName,
         content,
@@ -63,6 +64,24 @@ function SubmitPage() {
         toast.error("A small collapse: " + error.message);
       } else {
         setSubmitted(true);
+
+        // Dispatch the notification off-thread via the Supabase Edge Function
+        try {
+          fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/notify-submission`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+            },
+            body: JSON.stringify({ title, authorName, authorEmail, mood: moods, content })
+          }).then((res) => {
+            if (!res.ok) console.error("Notification function responded with an error status.");
+          }).catch((err) => {
+            console.error("Failed to fire notification function:", err);
+          });
+        } catch (emailErr) {
+          console.error("Error setting up notification dispatch:", emailErr);
+        }
       }
     } catch (err) {
       console.error(err);
@@ -88,8 +107,8 @@ function SubmitPage() {
           </header>
 
           {submitted ? (
-            <motion.div 
-              initial={{ opacity: 0 }} 
+            <motion.div
+              initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="mt-20 border-t border-b border-[var(--border)] py-16 text-center"
             >
@@ -135,8 +154,8 @@ function SubmitPage() {
                         onClick={() => toggle(m)}
                         className={cn(
                           "text-label-caps px-4 py-2 border transition-colors duration-200 rounded-none",
-                          active 
-                            ? "border-[var(--border-bright)] text-[var(--text-primary)] bg-[var(--bg-surface)]" 
+                          active
+                            ? "border-[var(--border-bright)] text-[var(--text-primary)] bg-[var(--bg-surface)]"
                             : "border-[var(--border)] text-[var(--text-muted)] bg-transparent hover:border-[var(--border-bright)]"
                         )}
                       >
