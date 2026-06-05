@@ -664,11 +664,11 @@ and burning.`
     title: "Among the Stars",
     author: "Sahaj",
     excerpt: "The stars don't shine by chance alone,",
-    content: `The stars don't shine by chance alone,
+    content: `The stars don't shine by chance alone,  
 
-They burn through darkness on their own.
+They burn through darkness on their own.  
 
-Like every dream within your heart,
+Like every dream within your heart,  
 
 Great galaxies begin with a spark.`,
     mood: ["WONDER", "HOPE"],
@@ -683,47 +683,47 @@ Great galaxies begin with a spark.`,
     title: "Incendiary",
     author: "Akshansh",
     excerpt: "every second between us begging to be ruined.",
-    content: `Unwrap me slow...
+    content: `Unwrap me slow...  
 
-I'm your sweetest temptation.
+I'm your sweetest temptation.  
 
-Try not to lose control.
+Try not to lose control.  
 
-The room is drowning in red,
-and so are your thoughts.
+The room is drowning in red,  
+and so are your thoughts.  
 
-You keep looking at me
-like I'm the last flame
-in a city gone dark,
-like one touch too many
-might turn desire into disaster.
+You keep looking at me  
+like I'm the last flame  
+in a city gone dark,  
+like one touch too many  
+might turn desire into disaster.  
 
-Good.
+Good.  
 
-I was never meant
-to be a safe place.
+I was never meant  
+to be a safe place.  
 
-I am the wine left breathing,
-the match struck at midnight,
-the warning label
-you read twice
-and ignore anyway.
+I am the wine left breathing,  
+the match struck at midnight,  
+the warning label  
+you read twice  
+and ignore anyway.  
 
-Come closer.
+Come closer.  
 
-Close enough
-to hear your restraint breaking,
-close enough
-to mistake danger for destiny.
+Close enough  
+to hear your restraint breaking,  
+close enough  
+to mistake danger for destiny.  
 
-Because some cravings
-don't arrive as hunger.
-They arrive as fire.
+Because some cravings  
+don't arrive as hunger.  
+They arrive as fire.  
 
-And tonight,
-every glance feels incendiary,
-every silence burns,
-every second between us
+And tonight,  
+every glance feels incendiary,  
+every silence burns,  
+every second between us  
 begging to be ruined.`,
     mood: ["LONGING", "CATHARSIS"],
     collection: "nocturne",
