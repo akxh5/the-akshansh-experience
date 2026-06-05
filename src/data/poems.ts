@@ -924,6 +924,40 @@ how to rest in love.`,
     featured: false,
     coverImage: "",
     isSubmission: false
+  },
+  {
+    slug: "the-path-is-the-proof",
+    title: "The Path is the Proof",
+    author: "Akshansh",
+    excerpt: "I move because standing still is betrayal.",
+    content: `They speak of success as if it's a summit.  
+As if the climb isn't the very becoming.  
+
+I do not wait for applause.  
+I do not move for reward.  
+I move because standing still is betrayal.  
+
+Each day, I meet resistance not as an enemy,  
+but as a sculptor meets stone,  
+chisel in hand, shaping meaning from impact.  
+
+What they call grind, I call alignment.  
+What they call suffering, I call sharpening.  
+
+The world does not owe me clarity,  
+but I owe myself the discipline to walk blind  
+and still not flinch.  
+
+I am not chasing victory.  
+I am becoming the kind of man  
+who earns it,  
+with or without the world noticing.`,
+    mood: ["PHILOSOPHY", "RESILIENCE", "INTROSPECTION"],
+    collection: "observations",
+    date: "2026-06-05",
+    featured: false,
+    coverImage: "",
+    isSubmission: false
   }
 ];
 
