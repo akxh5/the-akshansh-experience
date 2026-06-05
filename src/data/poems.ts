@@ -843,6 +843,87 @@ But I was someone who almost went.`,
     featured: false,
     coverImage: "",
     isSubmission: false
+  },
+  {
+    slug: "we-are-not-one",
+    title: "We Are Not One",
+    author: "Akshansh",
+    excerpt: "strength is just what's left when no one offers to understand.",
+    content: `I don't talk about how I feel.  
+It's easier to smile  
+than to explain what hurts.  
+Easier to lead  
+than to admit I'm lost too.  
+
+People call me strong  
+like it's a compliment,  
+but strength is just what's left  
+when no one offers to understand.  
+
+I laugh loud,  
+talk fast,  
+keep the room alive,  
+because silence feels heavier  
+when I'm alone with it.  
+
+I wanted her to know me,  
+not the face everyone sees,  
+not the loud one, the sure one,  
+but the me that falls apart quietly,  
+that just wants to be heard once  
+without being told to sleep it off.  
+
+I never wanted grand love,  
+just recognition.  
+A moment where she'd see me  
+and say,  
+I get you.  
+
+I tried to teach,  
+to shape,  
+to care in ways that didn't look soft.  
+Maybe that's why she never noticed  
+how much I needed to be held too.  
+
+I'm called a leader,  
+a fixer,  
+a man who has it all together,  
+but I just want to be a man  
+in the eyes of my own world.  
+Not perfect,  
+just understood.  
+
+I like the quiet,  
+but I still wish someone  
+would find me in it.  
+
+I am a paradox,  
+hard as diamond,  
+soft as bloom.  
+
+Redemption, maybe that's what I seek,  
+not for my mistakes,  
+but for every feeling I buried  
+to keep everyone else okay.  
+
+And maybe that's where it ends,  
+not in anger,  
+not in blame,  
+just in acceptance.  
+
+We are not one,  
+and maybe  
+we were never meant to be.  
+
+You, the calm,  
+me, the storm that never learned  
+how to rest in love.`,
+    mood: ["SOLITUDE", "INTROSPECTION", "CATHARSIS"],
+    collection: "architecture-of-leaving",
+    date: "2026-06-05",
+    featured: false,
+    coverImage: "",
+    isSubmission: false
   }
 ];
 
