@@ -665,8 +665,11 @@ and burning.`
     author: "Sahaj",
     excerpt: "The stars don't shine by chance alone,",
     content: `The stars don't shine by chance alone,
+
 They burn through darkness on their own.
+
 Like every dream within your heart,
+
 Great galaxies begin with a spark.`,
     mood: ["WONDER", "HOPE"],
     collection: "constellations",
