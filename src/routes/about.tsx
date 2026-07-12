@@ -49,14 +49,14 @@ function AboutPage() {
           <div className="mt-20 pt-10 border-t border-[var(--border)]">
             <h2 className="text-label-caps text-[var(--text-muted)] mb-6">CONTACT</h2>
             <div className="flex flex-col gap-4">
-              <a href="mailto:hello@the-akshansh-experience.com" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
-                hello@the-akshansh-experience.com
+              <a href="mailto:theakshanshexperience@gmail.com" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
+                theakshanshexperience@gmail.com
               </a>
               <a href="https://instagram.com/akxh_5" target="_blank" rel="noopener noreferrer" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
                 INSTAGRAM — @akxh_5
               </a>
-              <a href="https://twitter.com/akxh_5" target="_blank" rel="noopener noreferrer" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
-                TWITTER — @akxh_5
+              <a href="https://twitter.com/akshansh" target="_blank" rel="noopener noreferrer" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
+                TWITTER — @akshansh
               </a>
               <a href="https://akxh5.me" target="_blank" rel="noopener noreferrer" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
                 PORTFOLIO — akxh5.me
