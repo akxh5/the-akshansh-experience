@@ -31,7 +31,7 @@ function AboutPage() {
               The Akshansh Experience is not a blog. It is not a portfolio. It is an archive of small weathers — the kinds of feelings that arrive at 2am and refuse to be named properly.
             </p>
             <p>
-              Every poem here was written in a specific kind of quiet. Some in winter. Some in the particular loneliness of a crowded room. Some while trying to forget, and some while trying to remember.
+              Every poem here was written in a specific kind of quiet. Some in winter. Some in the particular loneliness of a crowded room. Some while trying to forget, and some while trying to re[...]
             </p>
             <p>
               This platform was built to resist the speed of the internet. There is no algorithm here. No engagement farming. No infinite scroll. Just writing, and the atmosphere it deserves.
@@ -55,8 +55,8 @@ function AboutPage() {
               <a href="https://instagram.com/akxh_5" target="_blank" rel="noopener noreferrer" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
                 INSTAGRAM — @akxh_5
               </a>
-              <a href="https://twitter.com/akshansh" target="_blank" rel="noopener noreferrer" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
-                TWITTER — @akshansh
+              <a href="https://x.com/akxh_5" target="_blank" rel="noopener noreferrer" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
+                X — @akxh_5
               </a>
               <a href="https://akxh5.me" target="_blank" rel="noopener noreferrer" className="text-body-standard italic hover:text-[var(--text-secondary)] transition-colors">
                 PORTFOLIO — akxh5.me
